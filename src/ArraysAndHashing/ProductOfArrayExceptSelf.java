@@ -1,4 +1,4 @@
-package src;
+package src.ArraysAndHashing;
 
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {

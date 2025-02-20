@@ -1,6 +1,5 @@
-package src;
+package src.ArraysAndHashing;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 

@@ -1,7 +1,6 @@
-package src;
+package src.ArraysAndHashing;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
