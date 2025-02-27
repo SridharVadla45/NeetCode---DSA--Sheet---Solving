@@ -1,0 +1,67 @@
+package src.mathandgeometry;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpiralMatrix {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        boolean [][] isVisited = new boolean [row][col];
+
+        int m=0;
+        int n =row-1;
+        int p=0;
+        int q=col-1;
+
+        while(m<=n && p<=q) {
+            //first row
+            for (int i = p; i <=q; i++) {
+               if(isValid(matrix,m,i) && !isVisited[m][i]) {
+                   ans.add(matrix[m][i]);
+                   isVisited[m][i]=true;
+               }
+            }
+            //last col
+            for (int i = m; i <=n; i++) {
+                if(isValid(matrix,m,q) && !isVisited[m][q]) {
+                    ans.add(matrix[i][q]);
+                    isVisited[m][q]=true;
+                }
+            }
+            //last row
+            for (int i = p; i <=q; i++)  {
+                if(isValid(matrix,n,i) && !isVisited[n][i]) {
+                    ans.add(matrix[n][i]);
+                    isVisited[n][i]=true;
+                }
+            }
+            //first col
+            for (int i = m; i <= n; i++) {
+                if(isValid(matrix,m,p) && !isVisited[m][p]) {
+                    ans.add(matrix[i][p]);
+                    isVisited[m][p]=true;
+                }
+            }
+
+            m++;
+            n--;
+            p++;
+            q--;
+
+        }
+
+        return  ans ;
+    }
+
+    private static  boolean isValid(int [][] matix ,int i,int j){
+        int row =matix.length;
+        int col=matix[0].length;
+
+        return i>=0 && i< row && j>=0 && j<col;
+    }
+
+
+}
