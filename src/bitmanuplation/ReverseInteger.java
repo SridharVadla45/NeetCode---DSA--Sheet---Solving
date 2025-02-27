@@ -1,0 +1,25 @@
+package src.bitmanuplation;
+
+public class ReverseInteger {
+    public int reverse(int x) {
+       if(x<0){
+           int temp =  -1*getReverseNumber(x*-1);
+           if(temp >=(-1<<31) && temp<=(1<<31)) return temp;
+           else return 0;
+       }
+        int temp =  getReverseNumber(x);
+        if(temp >=(-1<<31) && temp<=(1<<31)) return temp;
+        else return 0;
+    }
+
+    private static  int getReverseNumber(int x){
+        int num =0;
+        while(x>0){
+            int digit = x%10;
+            num=digit+num*10;
+            x/=10;
+        }
+        return num;
+    }
+
+}
