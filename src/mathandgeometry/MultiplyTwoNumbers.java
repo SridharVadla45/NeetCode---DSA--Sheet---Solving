@@ -1,0 +1,82 @@
+package src.mathandgeometry;
+
+public class MultiplyTwoNumbers {
+    public static void main(String[] args) {
+        System.out.println(multiply("123", "321"));
+    }
+
+    public static   String multiply(String num1, String num2) {
+        int n1 = num1.length();
+        int n2 = num2.length();
+        if(n1==1 || n2==1){
+            if(num1.charAt(0)-'0'==0 || num2.charAt(0)-'0'==0  ) return "0";
+        }
+        String dummy = "0";
+
+        for (int i = n2 - 1; i >= 0; i--) {
+            int lastDigit = num2.charAt(i)-'0';
+            String temp = getProduct(num1, lastDigit);
+            System.out.println("product at each stage :"+temp);
+            for( int j=0;j<n2-i-1;j++){
+                temp+="0";
+            }
+            System.out.println("temp:"+temp);
+            dummy = getSum(temp, dummy);
+            System.out.println(dummy);
+
+        }
+        return dummy;
+    }
+
+    private static String getSum(String temp, String dummy) {
+        int carry = 0;
+        int n1 = temp.length() - 1;
+        int n2 = dummy.length() - 1;
+        String ans = "";
+        while (n1 >= 0 && n2 >= 0) {
+            int lastDigit = temp.charAt(n1) - '0';
+            int lastDummyDigit = dummy.charAt(n2) - '0';
+            int sum = lastDummyDigit + lastDigit + carry;
+            ans = sum % 10 + ans;
+            carry = sum / 10;
+            n1--;
+            n2--;
+        }
+
+        while (n1 >= 0) {
+            int lastDigit = temp.charAt(n1) - '0';
+            int sum = lastDigit + carry;
+            ans = sum % 10 + ans;
+            carry = sum / 10;
+            n1--;
+        }
+
+        while (n2 >= 0) {
+            int lastDummyDigit = dummy.charAt(n2) - '0';
+            int sum = lastDummyDigit + carry;
+            ans = sum % 10 + ans;
+            carry = sum / 10;
+            n2--;
+        }
+
+        if (carry > 0) ans = carry + ans;
+
+        return ans;
+
+    }
+
+    private static String getProduct(String num, int digit) {
+        int carry = 0;
+        int n = num.length();
+        String ans = "";
+        for (int i = n - 1; i >= 0; i--) {
+            int lastDigit = num.charAt(i) - '0';
+            int prod = (lastDigit * digit) + carry;
+            ans = prod % 10 + ans;
+            carry = prod / 10;
+        }
+        if (carry > 0) ans = carry + ans;
+        return ans;
+
+    }
+}
