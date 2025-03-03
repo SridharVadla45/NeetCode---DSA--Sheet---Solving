@@ -1,5 +1,7 @@
 package src.mathandgeometry;
 
+import java.util.ArrayList;
+
 public class MultiplyTwoNumbers {
     public static void main(String[] args) {
         System.out.println(multiply("123", "321"));
@@ -12,18 +14,26 @@ public class MultiplyTwoNumbers {
             if(num1.charAt(0)-'0'==0 || num2.charAt(0)-'0'==0  ) return "0";
         }
         String dummy = "0";
+        ArrayList<String> partialProd = new ArrayList<>();
 
         for (int i = n2 - 1; i >= 0; i--) {
             int lastDigit = num2.charAt(i)-'0';
             String temp = getProduct(num1, lastDigit);
             System.out.println("product at each stage :"+temp);
-            for( int j=0;j<n2-i-1;j++){
-                temp+="0";
-            }
+//            for( int j=0;j<n2-i-1;j++){
+//                temp+="0";
+//            }
+            int place = n2-i-1;
+            if(place>0) temp+=10^place;
             System.out.println("temp:"+temp);
-            dummy = getSum(temp, dummy);
-            System.out.println(dummy);
+            partialProd.add(temp);
+//            dummy = getSum(temp, dummy);
+//            System.out.println(dummy);
 
+        }
+
+        for(String s : partialProd){
+            dummy=getSum(s,dummy);
         }
         return dummy;
     }

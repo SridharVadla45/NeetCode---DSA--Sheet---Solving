@@ -1,0 +1,15 @@
+package src.Graph.Traversal.DepthFirstSearch;
+
+import java.util.ArrayList;
+
+public class Solution {
+    private void dfs(int currentNode , boolean [] isVisited, ArrayList<ArrayList<Integer>> graph ){
+        isVisited[currentNode]=true;
+        System.out.print(currentNode+" ");
+        for(Integer i: graph.get(currentNode)){
+            if(!isVisited[i]){
+                dfs(i,isVisited,graph);
+            }
+        }
+    }
+}
