@@ -1,0 +1,44 @@
+package src.Graph.Problems.detectcyclein2darray;
+
+public class Solution {
+    int[] delRow = {-1, 0, 1, 0};
+    int[] delCol = {0, 1, 0, -1};
+
+    public boolean containsCycle(char[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        boolean[][] isVisited = new boolean[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (!isVisited[i][j]) {
+                    if (dfs(grid, i, j, isVisited,-1,-1)) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean dfs(char[][] grid, int i, int j, boolean[][] isVisited,int prevRow,int prevCol) {
+        isVisited[i][j] = true;
+        for (int m = 0; m < 4; m++) {
+            int newRow = i + delRow[m];
+            int newCol = j + delCol[m];
+            if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid.length) {
+                if (!isVisited[newRow][newCol] ){
+                    if(grid[i][j] == grid[newRow][newCol]) {
+                        if(dfs(grid, newRow, newCol, isVisited,i,j)) return true;
+                    }
+                }else{
+                    if(grid[i][j] == grid[newRow][newCol]){
+                        if (newRow==prevRow && newCol==prevCol){
+                            continue;
+                        }else return true;
+                    }
+
+                }
+
+            }
+        }
+        return false;
+    }
+}
