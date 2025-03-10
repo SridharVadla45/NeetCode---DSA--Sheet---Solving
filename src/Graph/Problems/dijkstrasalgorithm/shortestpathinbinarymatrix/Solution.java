@@ -1,6 +1,8 @@
 package src.Graph.Problems.dijkstrasalgorithm.shortestpathinbinarymatrix;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Solution {
 
@@ -17,7 +19,7 @@ public class Solution {
         }
 
         dist[0][0]=1;
-        PriorityQueue<int []> priorityQueue=new PriorityQueue<>((a,b)->a[2]-b[2]);
+        Queue<int []> priorityQueue=new LinkedList<>();
         priorityQueue.add(new int[]{0,0,1});
         while (!priorityQueue.isEmpty()){
             int [] current = priorityQueue.poll();
