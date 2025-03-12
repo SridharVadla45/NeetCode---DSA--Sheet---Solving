@@ -7,7 +7,7 @@ public class Solution {
        int val ;
        TreeNode left;
        TreeNode right;
-       TreeNode(int val){this.val=val}
+       TreeNode(int val){this.val=val;}
     }
     public List<Double> averageOfLevels(TreeNode root) {
         Queue<TreeNode> queue= new LinkedList<>();
