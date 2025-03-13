@@ -1,0 +1,12 @@
+package src.treedatastructure.Problems.diameterofbt;
+
+import src.treedatastructure.Problems.levelordertraversal.Solution.TreeNode;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+
+    }
+}
