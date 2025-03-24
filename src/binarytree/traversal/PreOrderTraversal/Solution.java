@@ -1,0 +1,22 @@
+package src.binarytree.traversal.PreOrderTraversal;
+import src.binarytree.util.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    List<Integer> result = new ArrayList<>();
+
+    public List<Integer> preorderTraversal(TreeNode root) {
+        preOrderRecursive(root);
+        return result;
+    }
+
+    private void preOrderRecursive( TreeNode root) {
+        if(root==null) return ;
+        result.add(root.val);
+        preOrderRecursive(root.left);
+        preOrderRecursive(root.right);
+    }
+
+}

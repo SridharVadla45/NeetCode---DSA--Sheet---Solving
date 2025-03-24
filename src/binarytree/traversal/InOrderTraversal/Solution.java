@@ -1,0 +1,21 @@
+package src.binarytree.traversal.InOrderTraversal;
+import src.binarytree.util.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        inorderRecursive(result,root);
+        return  result ;
+    }
+
+    private void inorderRecursive(List<Integer> result, TreeNode root) {
+        if(root == null) return;
+        inorderRecursive(result,root.left);
+        result.add(root.val);
+        inorderRecursive(result,root.right);
+    }
+}
