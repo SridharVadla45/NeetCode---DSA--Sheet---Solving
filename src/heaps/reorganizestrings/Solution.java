@@ -1,0 +1,14 @@
+package src.heaps.reorganizestrings;
+
+import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.logging.Handler;
+
+public class Solution {
+    public String reorganizeString(String s) {
+     PriorityQueue<Character> heap = new PriorityQueue<>();
+     for(char c : s.toCharArray()) heap.offer(c);
+
+     return null;
+    }
+}

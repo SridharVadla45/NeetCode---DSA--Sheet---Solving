@@ -1,0 +1,17 @@
+package src.heaps.ksmallestelementsinsortedmatrix;
+
+import java.util.PriorityQueue;
+
+public class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for(int [] row : matrix){
+            for(int element : row){
+                minHeap.offer(element);
+            }
+        }
+
+        for(int i=0;i<k-1;i++) minHeap.poll();
+        return minHeap.poll();
+    }
+}
